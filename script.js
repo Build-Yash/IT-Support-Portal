@@ -357,3 +357,118 @@ function updateTicketStatus(ticketNumber, newStatus) {
 
     alert("Ticket status updated to " + newStatus);
 }
+
+// Generic troubleshooting flow for Network, Windows, Email and Printer
+
+function showTroubleshooting(category) {
+    const guides = {
+        Network: {
+            title: "Network Troubleshooting",
+            question: "What network problem are you experiencing?",
+            options: [
+                ["No internet connection", "Check whether Wi-Fi is enabled. Restart your router and reconnect."],
+                ["Slow internet", "Disconnect unused devices and restart your router."],
+                ["Wi-Fi not connecting", "Check the Wi-Fi password and reconnect to the network."],
+                ["Network keeps disconnecting", "Move closer to the router and check the network connection."]
+            ]
+        },
+
+        Windows: {
+            title: "Windows Troubleshooting",
+            question: "What Windows problem are you experiencing?",
+            options: [
+                ["Computer running slowly", "Close unnecessary applications and check Task Manager for high resource usage."],
+                ["Computer freezing", "Wait briefly, close unresponsive applications if possible, and restart if necessary."],
+                ["Windows update problem", "Check your internet connection and Windows Update status."],
+                ["Blue screen error", "Record the error message and contact IT support if the issue continues."]
+            ]
+        },
+
+        Email: {
+            title: "Email Troubleshooting",
+            question: "What email problem are you experiencing?",
+            options: [
+                ["Cannot send emails", "Check your internet connection, recipient address, and Outbox."],
+                ["Cannot receive emails", "Check your inbox, spam folder, and available mailbox storage."],
+                ["Cannot log in", "Verify your email address and contact IT support if authentication fails."],
+                ["Email application not opening", "Restart the application and check whether an update is available."]
+            ]
+        },
+
+        Printer: {
+            title: "Printer Troubleshooting",
+            question: "What printer problem are you experiencing?",
+            options: [
+                ["Printer not printing", "Check power, connection, paper, and the selected printer."],
+                ["Paper jam", "Follow the printer manufacturer's instructions to remove jammed paper safely."],
+                ["Printer offline", "Check the printer connection and make sure the correct printer is selected."],
+                ["Poor print quality", "Check ink or toner levels and run the printer's maintenance utility."]
+            ]
+        }
+    };
+
+    const guide = guides[category];
+
+    if (!guide) return;
+
+    let html = `
+        <h2>${guide.title}</h2>
+        <p>${guide.question}</p>
+    `;
+
+    guide.options.forEach((option, index) => {
+        html += `
+            <button onclick="showTroubleshootingSolution('${category}', ${index})">
+                ${option[0]}
+            </button>
+        `;
+    });
+
+    html += `
+        <br><br>
+        <button onclick="location.reload()">Back to Home</button>
+    `;
+
+    document.getElementById("app").innerHTML = html;
+}
+
+function showTroubleshootingSolution(category, index) {
+    const guides = {
+        Network: [
+            ["No internet connection", "Check whether Wi-Fi is enabled. Restart your router and reconnect."],
+            ["Slow internet", "Disconnect unused devices and restart your router."],
+            ["Wi-Fi not connecting", "Check the Wi-Fi password and reconnect to the network."],
+            ["Network keeps disconnecting", "Move closer to the router and check the network connection."]
+        ],
+        Windows: [
+            ["Computer running slowly", "Close unnecessary applications and check Task Manager for high resource usage."],
+            ["Computer freezing", "Wait briefly, close unresponsive applications if possible, and restart if necessary."],
+            ["Windows update problem", "Check your internet connection and Windows Update status."],
+            ["Blue screen error", "Record the error message and contact IT support if the issue continues."]
+        ],
+        Email: [
+            ["Cannot send emails", "Check your internet connection, recipient address, and Outbox."],
+            ["Cannot receive emails", "Check your inbox, spam folder, and available mailbox storage."],
+            ["Cannot log in", "Verify your email address and contact IT support if authentication fails."],
+            ["Email application not opening", "Restart the application and check whether an update is available."]
+        ],
+        Printer: [
+            ["Printer not printing", "Check power, connection, paper, and the selected printer."],
+            ["Paper jam", "Follow the printer manufacturer's instructions to remove jammed paper safely."],
+            ["Printer offline", "Check the printer connection and make sure the correct printer is selected."],
+            ["Poor print quality", "Check ink or toner levels and run the printer's maintenance utility."]
+        ]
+    };
+
+    const option = guides[category]?.[index];
+
+    if (!option) return;
+
+    document.getElementById("app").innerHTML = `
+        <h2>${option[0]}</h2>
+        <p>${option[1]}</p>
+        <p>Did this suggestion resolve your issue?</p>
+        <button onclick="location.reload()">Yes, Back to Home</button>
+        <button onclick="createTicket()">No, Create Support Ticket</button>
+    `;
+}
