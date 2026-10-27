@@ -1,7 +1,7 @@
 function showsoftwareissue() {
 
     document.getElementById("app").innerHTML = `
-    
+
         <h2>What is happening with your software?</h2>
 
         <p>Select the problem you're experiencing:</p>
@@ -13,8 +13,10 @@ function showsoftwareissue() {
         <button>Error message</button>
         <button>Installation / update problem</button>
 
+        <br><br>
+        <button onclick="location.reload()">Back to Home</button>
     `;
-
+    
 }
 function applicationCrash() {
 
