@@ -1,0 +1,181 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    margin: 0;
+    color: #1e293b;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+    text-align: center;
+}
+
+h1 {
+    color: #1d4ed8;
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+h2 {
+    color: #1e40af;
+    font-size: 28px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #64748b;
+}
+
+.issue-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 35px;
+}
+
+button {
+    padding: 15px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    background: #2563eb;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.issue-grid button {
+    min-height: 75px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px;
+    margin-top: 7px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid #93c5fd;
+    border-color: #2563eb;
+}
+
+form {
+    max-width: 500px;
+    margin: 25px auto;
+    text-align: left;
+}
+
+form button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 14px;
+}
+
+th {
+    background: #1e40af;
+    color: white;
+    padding: 13px;
+    text-align: left;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+tr:hover td {
+    background: #f8fafc;
+}
+
+#app {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 20px 12px;
+        padding: 22px 16px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
+    .issue-grid {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+}
+
+.priority-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.priority-high {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.priority-medium {
+    background: #ffedd5;
+    color: #c2410c;
+}
+
+.priority-low {
+    background: #dcfce7;
+    color: #15803d;
+}
